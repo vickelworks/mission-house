@@ -40,7 +40,7 @@ const Corevalues = styled(({ className }) => {
     </div>
   )
 })`
-  background: -webkit-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)), url("mission-house/core-values-bg.jpg") no-repeat;
+  background: -webkit-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)), url("core-values-bg.jpg") no-repeat;
   background-size:cover;
   background-attachment:fixed;
   width:100%;
