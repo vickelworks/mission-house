@@ -1,4 +1,7 @@
 .app{
   background-color: aliceblue;
   text-align:center;
+  width: 100%;
+  overflow-x:hidden;
+
 }

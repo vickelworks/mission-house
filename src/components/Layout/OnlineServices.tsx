@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import Card from "../Card";
+import { Link } from "react-router-dom";
 
 const OnlineServices = styled(({ className }) => {
   return (
     <>
       <div className={className}>
         <div className="card">
-          <Card color="white" src="mission-house/pst3.jpg" alt="" label="Listen to Sermon" />
+          <Link to="/pages/sermons" style={{ textDecoration: "none" }}>
+            <Card color="white" src="mission-house/pst3.jpg" alt="" label="Listen to Sermon" />
+          </Link>
           <Card color="white" src="mission-house/hotr-img2.jpg" alt="" label="worship warfare" />
-          <Card color="white" src="mission-house/serve3.jpg" alt="" label="PUSH" />
-          <Card color="white" src="mission-house/serve4.jpg" alt="" label="LOVE" />
+          <Card color="white" src="mission-house/hotr-img.jpg" alt="" label="PUSH" />
+          <Card color="white" src="mission-house/hotr-7.jpg" alt="" label="LOVE" />
         </div>
       </div>
     </>

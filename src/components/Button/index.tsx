@@ -57,7 +57,8 @@ width:${props => getSize(props.size)};
   box-shadow:0 1px 3px rgba(0,0,0,.5);
   cursor:pointer;
 }
-&:hover > * {fill:#8AC23D;}
+& > * {fill: ${({ theme }) => theme.colors.white};}
+&:hover > * {fill:${({ theme }) => theme.colors.primary};}
 &:active {box-shadow:none; opacity:.8; text-decoration:none; transform:scale(.9);} 
 
   ${props => props.active && `

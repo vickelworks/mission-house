@@ -1,17 +1,15 @@
-import Header from "./components/Layout/Header";
+import Home from "./pages/home";
+import Sermons from "./pages/sermons";
+import Locate from "./pages/locate";
+import NavBar from "./components/NavBar";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import NewHere from "./components/Layout/NewHere";
-import Corevalues from "./components/Layout/Corevalues";
-import OnlineServices from "./components/Layout/OnlineServices";
-import ServiceQuotes from "./components/Layout/ServiceQuotes";
-import MeetPastor from "./components/Layout/MeetPastor";
-import Footer from "./components/Layout/Footer";
 import Theme from "./utils/theme";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 const App = () => {
   const GlobalStyle = createGlobalStyle`
-    body{
+    html, body{
       text-align:center;
       background-color:#dfdfdf;
       margin: 0;
@@ -23,6 +21,7 @@ const App = () => {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       transition: all 0.5s linear;
+      scroll-behavior:smooth;
     }
     body > * {
       width:100%;
@@ -41,14 +40,16 @@ const App = () => {
     <>
       <ThemeProvider theme={Theme}>
         <GlobalStyle />
-        <Header />
-        <NewHere />
-        <Corevalues />
-        <OnlineServices />
-        <ServiceQuotes />
-        <MeetPastor />
-        <Footer />
+        <Router>
+          <Switch>
+            <Route path="/" exact component={() => <Home />} />
+            <Route path="/pages/sermons" exact component={() => <Sermons />} />
+            <Route path="/pages/locate" exact component={() => <Locate />} />
+          </Switch>
+          <NavBar />
+        </Router>
       </ThemeProvider>
+
     </>
   );
 }

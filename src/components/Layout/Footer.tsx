@@ -34,7 +34,7 @@ const Footer = styled(({ className }) => {
       </div>
       <div className="footer-aux">
         <Text size="3" color="white">© 2020 HOUSE ON THE ROCK. ALL RIGHTS RESERVED.</Text>
-        <img className="footer-logo" src="hotr-logo.png" alt="logo" />
+        <img className="footer-logo" src="mission-house/hotr-logo.png" alt="logo" />
       </div>
     </div>
   )

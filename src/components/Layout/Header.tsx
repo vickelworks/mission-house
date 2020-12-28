@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Text from "../Text";
-import NavBar from "../NavBar";
 // import BackgroundSlider from 'react-background-slider';
 import styled, { keyframes } from "styled-components";
 import Home from "../Icons/Home";
@@ -9,22 +8,16 @@ import '../../App.css';
 
 const bgSlider = keyframes`
   from {
-    background: -webkit-linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.8)),url("mission-house/pst4.jpg") no-repeat;
-    background-size:cover;
-    background-position:100% 80%;
-  }
-  30% {
-    background: -webkit-linear-gradient( rgba(0,0,0,.1), rgba(0,0,0,.8)),url("mission-house/pst4.jpg") no-repeat;
-    background-size:cover;
-    background-position:0;
+    background: -webkit-linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.8)),url("/hotr-mission-house.png") no-repeat;
+    background-size:100% 100%;
   }
   70% {
-    background: -webkit-linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),url("mission-house/serve1.jpg") no-repeat;
+    background: -webkit-linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.8)),url("/hotr-1.jpg") no-repeat;
     background-size:cover;
   }
   to {
-    background: -webkit-linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)),url("mission-house/hoj9.jpg") no-repeat;
-    background-size:100% 100%;
+    background: -webkit-linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.8)),url("/pst-paul.jpg") no-repeat;
+    background-size:cover;
   }
 `;
 const hotr = keyframes`
@@ -58,15 +51,15 @@ const Header = styled(({ className }) => {
     window.addEventListener("scroll", handleScroll);
   })
   return (
-    <div className={className}>
-      <NavBar />
+    <div className={className} id="top">
       {/* <Text size="4" align="left" color="white">WELCOME TO</Text>
       <Text className="hotr" size="5" weight="bolder" align="left" color="white">HOUSE ON <br /> THE ROCK KADUNA</Text> */}
       <Text className="mission-house" size="3" color="white" >THE MISSION HOUSE</Text>
-      {scrolled && <a href="#nav" className="backToTop"><Home color="#8AC23D" size="20" /></a>}
+      {scrolled && <a href="#top" className="backToTop"><Home color="#8AC23D" size="20" /></a>}
     </div>
   )
 })`
+scroll-behavior:smooth;
 animation:${bgSlider} 15s ease-out infinite;
 background-repeat: no-repeat;
 background-size:cover;
@@ -95,6 +88,7 @@ position:relative;
 
 
 .backToTop {
+  z-index:9;
   position:fixed; bottom:20px; right:1em;
   animation:${BackToTopAnim} 1s ease ;
 }

@@ -40,7 +40,7 @@ const Corevalues = styled(({ className }) => {
     </div>
   )
 })`
-  background: -webkit-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)), url("core-values-bg.jpg") no-repeat;
+  background: -webkit-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)), url("mission-house/core-values-bg.jpg") no-repeat;
   background-size:cover;
   background-attachment:fixed;
   width:100%;
@@ -60,10 +60,11 @@ const Corevalues = styled(({ className }) => {
   .core-values-head {
     position:absolute; top:50%; left:0;
     transform:translateY(-50%);
+    width:100%;
+    text-align:center;
     font-size:13em;
     opacity:.1;
-    letter-spacing:0em;
-    word-spacing:-0.05em;
+    letter-spacing:.05em;
     line-height:.85em;
   }
   .core-values > .word, .worship, .prayer { width:25%; }

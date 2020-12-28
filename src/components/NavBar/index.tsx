@@ -1,12 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { A } from "../Button";
 import styled, { keyframes } from "styled-components";
 import Home from "../Icons/Home";
-import Events from "../Icons/Events";
+import Media from "../Icons/Media";
 import Location from "../Icons/Location";
 import Money from "../Icons/Money";
+import Menu from "../Menu";
 import useHandleScroll from "../../hooks/useHandleScroll"
+import { Link, withRouter } from "react-router-dom";
 
+
+const NavBar = () => {
+  return (
+    <>
+      <WebNav />
+      <MobileNav />
+    </>
+  )
+}
 const navAnim = keyframes`
 from{
   transform:translateY(-100%);
@@ -18,8 +29,27 @@ to{
 }
 `
 
+const mobileNavAnim = keyframes`
+  from{
+    opacity:0;
+    transform:translateY(100px);
+  }
+  50%{
+    opacity:0;
+    transform:translateY(50px);
+  }
+  51%{
+    opacity:1;
+    transform:translateY(50px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+`
 
-const NavBar = styled(({ className }) => {
+
+const WebNav = styled(({ className }) => {
   const { scrolled, handleScroll } = useHandleScroll();
 
   const NavClass: any = [];
@@ -32,12 +62,20 @@ const NavBar = styled(({ className }) => {
   return (
     <div className={className} id="nav">
       <div className={`nav-class ${NavClass.join(" ")}`}>
-        <img className="logo" src="mission-house/hotr-logo.png" alt="logo" />
+        <img className="logo" src="/hotr-logo.png" alt="logo" />
         <div className={`menu`}>
-          <A className="nav" href="#"><Home />Home</A>
-          <A className="nav" href="#"><Events />Events</A>
-          <A className="nav" href="#"><Location size="15" />Locate us</A>
-          <A href="#" size="2" active><Money />Give</A>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <A className="nav normal" href="#"><Home />Home</A>
+          </Link>
+          <Link to="/pages/sermons" style={{ textDecoration: 'none' }}>
+            <A className="nav normal" href="#"><Media />Media</A>
+          </Link>
+          <Link to="/pages/locate" style={{ textDecoration: 'none' }}>
+            <A className="nav normal" href="#"><Location size="15" />Locate us</A>
+          </Link>
+          <Link to="#" style={{ textDecoration: 'none' }}>
+            <A className="nav" href="#" size="2" active><Money />Give</A>
+          </Link>
         </div>
       </div>
 
@@ -45,7 +83,7 @@ const NavBar = styled(({ className }) => {
   );
 }
 )`
-  z-index:5000;
+  z-index:999999;
   @media (max-width: 600px){
     display:none;
   }
@@ -73,32 +111,138 @@ const NavBar = styled(({ className }) => {
     flex-direction:row;
     justify-content:space-between;}
   
-  .menu > ${A} {
+  .nav {
+    color:#fff;
+    text-shadow:0 0 3px #333;
     margin-right:30px;
     display:flex;
     justify-content:center;
     align-items:center;
+    font-size:1em;
   }
-  .nav {
-    background:${({ theme }) => theme.colors.default};
-    color:#fff;
-    text-shadow:0 0 3px #333;
+  .nav:visited {text-decoration:none;}
+  .normal {
+    background: ${({ theme }) => theme.colors.default};
+    text-decoration:none;
   }
-  .menu > ${A}:hover  {
+
+  .nav:hover  {
     background-color:rgba(255,255,255,1);
     color:${({ theme }) => theme.colors.primary}; 
     text-shadow:none;
     }
 
-  .menu > ${A} > *  {
-    fill:${({ theme }) => theme.colors.white};
+  .nav > *  {
     filter:drop-shadow(0 0 1px ${({ theme }) => theme.colors.primary});
     }
-  .menu > ${A}:hover > *  {
-    fill:${({ theme }) => theme.colors.primary};
-    filter:none;
+  .nav:hover > *  {
+    filter:drop-shadow(0 0 0 transparent);
     }
+  // .menu > ${A}:hover > *  {
+  //   fill:${({ theme }) => theme.colors.primary};
+  //   filter:none;
+  //   }
 
+`
+
+const MobileNav = styled(({ className }) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  // if (isVisible) {
+  //   window.addEventListener("click", () => setIsVisible(false))
+  // }
+  return (
+    <>
+      <div className={className}>
+        <div className="mobileNavHeader">
+          <div className="mobileNavHeadercontent">
+            <div><img src="/hotr-logo-mobile.png" alt="logo" /></div>
+            <div onClick={() => setIsVisible(!isVisible)}><Menu show={isVisible} /></div>
+          </div>
+        </div>
+        <div className={`mobileNav ${isVisible && "showMobileNav"} `}>
+          <div className={`mobilemenu`}>
+            <Link onClick={() => setIsVisible(false)} to="/" style={{ textDecoration: 'none' }}>
+              <A className="mobNav" href="#"><Home />Home</A>
+            </Link>
+            <Link onClick={() => setIsVisible(false)} to="/pages/sermons" style={{ textDecoration: 'none' }}>
+              <A className="mobNav" href="#"><Media />Media</A>
+            </Link>
+            <Link onClick={() => setIsVisible(false)} to="/pages/locate" style={{ textDecoration: 'none' }}>
+              <A className="mobNav" href="#"><Location size="15" />Locate us</A>
+            </Link>
+            <Link onClick={() => setIsVisible(false)} to="#" style={{ textDecoration: 'none' }}>
+              <A className="mobNav" href="#" size="2" active><Money />Give</A>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+})`
+
+display:none;
+width:100%;
+text-align:center;
+color: ${({ theme }) => theme.colors.white};
+position:fixed; top:0; left:0;
+display:none;
+@media (max-width: 600px){
+  display:block;
+}
+.mobileNavHeader {
+  background:rgba(0,0,0,.5);
+  width:100%;
+  position:fixed;
+  z-index:11111;
+ 
+}
+.mobileNavHeadercontent{
+  width:90%;
+  padding:10px 5px;
+  margin:0 auto;
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content:space-between;
+  align-items:center;
+  
+}
+.mobileNav {
+  position:absolute; top:0; left:0;
+  display:none;
+  background: rgba(0,0,0,.8);
+  height:100vh;
+  width:100%;
+  transition: .5s linear all;
+}
+.showMobileNav{
+  display:block;
+  
+}
+.mobilemenu {
+  position:absolute; bottom:0;
+  border-radius:20px 20px 0 0;
+  background: ${({ theme }) => theme.colors.primary};
+  height:60vh;
+  width:100%;
+  margin:auto;
+  padding:50px auto;
+  display:flex;
+  flex-flow:column wrap;
+  justify-content:center;  
+  align-items:center;
+  color:#fff;
+  animation: ${mobileNavAnim} .35s;
+
+}
+.mobNav {
+  color: ${({ theme }) => theme.colors.white};
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.2em;
+  margin-bottom:50px;
+
+}
 `
 
 export default NavBar;
