@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mission-house/static/css/main.d0f8a5b6.chunk.css",
+    "main.js": "/mission-house/static/js/main.ffba84e1.chunk.js",
+    "main.js.map": "/mission-house/static/js/main.ffba84e1.chunk.js.map",
+    "runtime-main.js": "/mission-house/static/js/runtime-main.520714df.js",
+    "runtime-main.js.map": "/mission-house/static/js/runtime-main.520714df.js.map",
+    "static/js/2.f27ac585.chunk.js": "/mission-house/static/js/2.f27ac585.chunk.js",
+    "static/js/2.f27ac585.chunk.js.map": "/mission-house/static/js/2.f27ac585.chunk.js.map",
+    "static/js/3.f839319b.chunk.js": "/mission-house/static/js/3.f839319b.chunk.js",
+    "static/js/3.f839319b.chunk.js.map": "/mission-house/static/js/3.f839319b.chunk.js.map",
+    "index.html": "/mission-house/index.html",
+    "static/css/main.d0f8a5b6.chunk.css.map": "/mission-house/static/css/main.d0f8a5b6.chunk.css.map",
+    "static/js/2.f27ac585.chunk.js.LICENSE.txt": "/mission-house/static/js/2.f27ac585.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.520714df.js",
+    "static/js/2.f27ac585.chunk.js",
+    "static/css/main.d0f8a5b6.chunk.css",
+    "static/js/main.ffba84e1.chunk.js"
+  ]
+}
